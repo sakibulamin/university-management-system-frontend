@@ -1,0 +1,9 @@
+export * from "./auth.hook";
+export * from "./department.hook";
+export * from "./program.hook";
+export * from "./course.hook";
+export * from "./semester.hook";
+export * from "./instructor.hook";
+export * from "./student.hook";
+export * from "./admin.hook";
+// export * from "./payment.hook";
