@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiClient";
-import {
+import type {
   ApiEnvelope,
   ApiPaginatedEnvelope,
   CreateProgramPayload,
@@ -37,7 +37,6 @@ export function updateProgram(id: string, payload: UpdateProgramPayload) {
   });
 }
 
-// Confirmed: blocked server-side if active students reference the program.
 export function deleteProgram(id: string) {
   return apiClient<ApiEnvelope<unknown>>(`/programs/${id}`, {
     method: "DELETE",

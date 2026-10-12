@@ -4,10 +4,10 @@ import {
   getMyStudent,
   getStudent,
   getStudents,
-  StudentListParams,
+  type StudentListParams,
   updateMyStudent,
 } from "@/api";
-import { AdminUpdateStudentPayload, UpdateMyStudentPayload } from "@/types";
+import type { AdminUpdateStudentPayload, UpdateMyStudentPayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const studentKeys = {
@@ -16,7 +16,6 @@ export const studentKeys = {
   me: ["students", "me"] as const,
 };
 
-// Confirmed "STUDENT only" — Student Dashboard profile (Step 7).
 export function useMyStudent() {
   return useQuery({
     queryKey: studentKeys.me,

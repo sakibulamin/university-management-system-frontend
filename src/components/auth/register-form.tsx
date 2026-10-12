@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useAuthRedirect, useRegistration } from "@/hooks";
 import { getErrorMessage } from "@/lib/get-error-message";
 import { registrationSchema } from "@/validation";
-import { UserRole } from "@/types";
+import type { UserRole } from "@/types";
 import { Button } from "../ui/button";
 import {
   Field,
@@ -130,22 +130,18 @@ export function RegisterForm() {
             }}
           </form.Field>
 
-          {/*
-            Plain <select>, not the shadcn Select primitive: this project's
-            components/ui/select.tsx (if it exists at all) has never been
-            seen by this assistant, and this project uses the "base-nova"
-            (Base UI) shadcn style, whose Select API differs from the more
-            common Radix one. A native <select> avoids depending on an
-            unseen file. Swap in the shadcn Select later if desired — a
-            visual change only, not a functional one.
-          */}
+         
           <form.Field name="role">
             {(field) => {
               const isInvalid =
                 field.state.meta.isTouched && !field.state.meta.isValid;
+
               return (
                 <Field data-invalid={isInvalid}>
-                  <FieldLabel htmlFor={field.name}>I am registering as</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>
+                    I am registering as
+                  </FieldLabel>
+
                   <select
                     id={field.name}
                     name={field.name}
@@ -155,17 +151,38 @@ export function RegisterForm() {
                       field.handleChange(e.target.value as UserRole)
                     }
                     aria-invalid={isInvalid}
-                    className="border-input bg-transparent flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-xs outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+                    className="flex h-11 w-full rounded-md border border-input bg-[#0b1120] px-3 py-2 text-sm text-white shadow-xs outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
                   >
-                    <option value="STUDENT">Student</option>
-                    <option value="INSTRUCTOR">Instructor</option>
-                    <option value="ADMIN">Admin</option>
+                    <option
+                      value="STUDENT"
+                      className="bg-[#0b1120] text-white"
+                    >
+                      Student
+                    </option>
+
+                    <option
+                      value="INSTRUCTOR"
+                      className="bg-[#0b1120] text-white"
+                    >
+                      Instructor
+                    </option>
+
+                    <option
+                      value="ADMIN"
+                      className="bg-[#0b1120] text-white"
+                    >
+                      Admin
+                    </option>
                   </select>
-                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+
+                  {isInvalid && (
+                    <FieldError errors={field.state.meta.errors} />
+                  )}
                 </Field>
               );
             }}
           </form.Field>
+
 
           <form.Field name="password">
             {(field) => {
@@ -186,6 +203,7 @@ export function RegisterForm() {
                       aria-invalid={isInvalid}
                       className="pr-10"
                       autoComplete="new-password"
+                      spellCheck={false}
                     />
                     <button
                       type="button"
@@ -217,13 +235,14 @@ export function RegisterForm() {
                     <Input
                       id={field.name}
                       name={field.name}
-                      type={showConfirmPassword ? "text" : "password"}
+                      type={showPassword ? "text" : "password"}
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
                       aria-invalid={isInvalid}
                       className="pr-10"
                       autoComplete="new-password"
+                      spellCheck={false}
                     />
                     <button
                       type="button"
@@ -263,7 +282,7 @@ export function RegisterForm() {
       <FieldSeparator>Or continue with</FieldSeparator>
 
       <GoogleLoginComponent
-        onAuthenticated={() => void completeAuthentication({})}
+   
       />
 
       <div className="text-center text-sm text-muted-foreground">

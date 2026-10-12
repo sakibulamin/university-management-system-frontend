@@ -6,12 +6,7 @@ interface BffClientOptions {
   headers?: Record<string, string>;
 }
 
-/**
- * Calls our own same-origin /api/auth/* Route Handlers. Separate from
- * apiClient.ts on purpose: these routes are themselves the refresh
- * mechanism, so they must never trigger apiClient's 401-retry logic, and
- * they have no baseURL to set (relative to this app, not the backend).
- */
+
 export async function bffClient<T>(
   url: string,
   options: BffClientOptions = {},

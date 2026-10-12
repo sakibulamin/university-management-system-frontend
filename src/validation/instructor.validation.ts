@@ -1,11 +1,5 @@
 import z from "zod";
 
-// TODO(contract): Phase 1 found the original reference project's phone
-// regex (expecting exactly 10 digits after "+880") actually rejects the
-// Postman collection's own instructor examples ("+880160234567",
-// "+880171234567" — 9 digits after 880). Kept deliberately lenient here
-// rather than reproducing a regex known to conflict with the backend's
-// own examples.
 const phoneSchema = z
   .string()
   .min(1, "Phone number is required.")

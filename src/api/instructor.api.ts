@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiClient";
-import {
+import type {
   ApiEnvelope,
   ApiPaginatedEnvelope,
   CreateInstructorPayload,
@@ -24,9 +24,6 @@ export function getInstructor(id: string) {
   return apiClient<ApiEnvelope<Record<string, unknown>>>(`/instructors/${id}`);
 }
 
-// Confirmed: "INSTRUCTOR only." per the Postman description. This is the
-// instructor's own self-service read endpoint — used by the Instructor
-// Dashboard (Step 6), never by admin management (Step 5).
 export function getMyInstructor() {
   return apiClient<ApiEnvelope<Record<string, unknown>>>("/instructors/me");
 }
@@ -45,7 +42,7 @@ export function updateInstructor(id: string, payload: UpdateInstructorPayload) {
   });
 }
 
-// Confirmed: blocked server-side if active section assignments exist.
+
 export function deleteInstructor(id: string) {
   return apiClient<ApiEnvelope<unknown>>(`/instructors/${id}`, {
     method: "DELETE",

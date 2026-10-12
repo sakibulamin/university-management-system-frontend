@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import LoginForm from "@/components/auth/login-form";
 
@@ -8,8 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  // LoginForm reads useSearchParams (callbackUrl) — must be wrapped in
-  // Suspense or `next build` fails.
+
   return (
     <Suspense fallback={null}>
       <LoginForm />

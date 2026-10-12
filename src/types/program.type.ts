@@ -4,7 +4,6 @@ export interface CreateProgramPayload {
   departmentId: string;
 }
 
-// Confirmed PATCH example only sends `name`.
 export interface UpdateProgramPayload {
   name: string;
 }

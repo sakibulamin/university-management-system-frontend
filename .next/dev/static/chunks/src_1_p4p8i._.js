@@ -269,31 +269,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$o
 ;
 function GoogleAuthProvider(t0) {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(5);
-    if ($[0] !== "354880e1a5569fbeba48c9ea3356c71abf036d2b93bed94004d9e7f6bedf7204") {
+    if ($[0] !== "85cb9dd822b0cc86e375d891e1701142fb89d8d484f923077f0f82c6701898f8") {
         for(let $i = 0; $i < 5; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "354880e1a5569fbeba48c9ea3356c71abf036d2b93bed94004d9e7f6bedf7204";
+        $[0] = "85cb9dd822b0cc86e375d891e1701142fb89d8d484f923077f0f82c6701898f8";
     }
     const { children } = t0;
-    const clientId = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-    if (!clientId) {
-        let t1;
-        if ($[1] !== children) {
-            t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                children: children
-            }, void 0, false, {
-                fileName: "[project]/src/providers/google-auth.provider.tsx",
-                lineNumber: 21,
-                columnNumber: 12
-            }, this);
-            $[1] = children;
-            $[2] = t1;
-        } else {
-            t1 = $[2];
-        }
-        return t1;
-    }
+    const clientId = ("TURBOPACK compile-time value", "150371679536-qirnkvfs3bekghg9l2i2qvm5300inqf1.apps.googleusercontent.com");
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
     let t1;
     if ($[3] !== children) {
         t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$oauth$2f$google$2f$dist$2f$index$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["GoogleOAuthProvider"], {
@@ -340,11 +325,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$t
 ;
 function Providers(t0) {
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(4);
-    if ($[0] !== "ce75a18c0ce8a54357a76def45710b082c273ec1c47f740ac42b18b842529cac") {
+    if ($[0] !== "cd00ce61ed39fee39b9fd1b629613ff896cc6c2cbed38c7862d2e988fa1f4863") {
         for(let $i = 0; $i < 4; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "ce75a18c0ce8a54357a76def45710b082c273ec1c47f740ac42b18b842529cac";
+        $[0] = "cd00ce61ed39fee39b9fd1b629613ff896cc6c2cbed38c7862d2e988fa1f4863";
     }
     const { children } = t0;
     let t1;
@@ -401,74 +386,61 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 __turbopack_context__.s([
     "default",
-    ()=>QueryProvider
+    ()=>Providers
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/compiler-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$environmentManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/query-core/build/modern/environmentManager.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$queryClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/query-core/build/modern/queryClient.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 "use client";
 ;
 ;
 ;
-function makeQueryClient() {
-    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$queryClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QueryClient"]({
-        defaultOptions: {
-            queries: {
-                staleTime: 60 * 1000
-            }
-        }
-    });
-}
-let browserQueryClient = undefined;
-function getQueryClient() {
-    if (__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$environmentManager$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["environmentManager"].isServer()) {
-        return makeQueryClient();
-    } else {
-        if (!browserQueryClient) {
-            browserQueryClient = makeQueryClient();
-        }
-        return browserQueryClient;
-    }
-}
-function QueryProvider(t0) {
+function Providers(t0) {
+    _s();
     const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$compiler$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["c"])(4);
-    if ($[0] !== "21c164c967e17e59a9600923eb82db632e7386031476f8711d19fa5a6b107acc") {
+    if ($[0] !== "d912380e43988ddec7bb70adae27bad080f3607922d9f3b354ba0cee67fcab21") {
         for(let $i = 0; $i < 4; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "21c164c967e17e59a9600923eb82db632e7386031476f8711d19fa5a6b107acc";
+        $[0] = "d912380e43988ddec7bb70adae27bad080f3607922d9f3b354ba0cee67fcab21";
     }
     const { children } = t0;
+    const [queryClient] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(_ProvidersUseState);
     let t1;
-    if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = getQueryClient();
-        $[1] = t1;
-    } else {
-        t1 = $[1];
-    }
-    const queryClient = t1;
-    let t2;
-    if ($[2] !== children) {
-        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QueryClientProvider"], {
+    if ($[1] !== children || $[2] !== queryClient) {
+        t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QueryClientProvider"], {
             client: queryClient,
             children: children
         }, void 0, false, {
             fileName: "[project]/src/providers/query.provider.tsx",
-            lineNumber: 47,
+            lineNumber: 20,
             columnNumber: 10
         }, this);
-        $[2] = children;
-        $[3] = t2;
+        $[1] = children;
+        $[2] = queryClient;
+        $[3] = t1;
     } else {
-        t2 = $[3];
+        t1 = $[3];
     }
-    return t2;
+    return t1;
 }
-_c = QueryProvider;
+_s(Providers, "ay1VWVgaod/iSc2baFLKxesyL3c=");
+_c = Providers;
+function _ProvidersUseState() {
+    return new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$tanstack$2f$query$2d$core$2f$build$2f$modern$2f$queryClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["QueryClient"]({
+        defaultOptions: {
+            queries: {
+                staleTime: 60000
+            }
+        }
+    });
+}
 var _c;
-__turbopack_context__.k.register(_c, "QueryProvider");
+__turbopack_context__.k.register(_c, "Providers");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

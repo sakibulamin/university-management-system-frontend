@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { DashboardStats } from "@/components/admin/dashboard/dashboard-stats";
 import { PageHeader } from "@/components/admin/page-header";
 

@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiClient";
-import {
+import type {
   ApiEnvelope,
   ApiPaginatedEnvelope,
   CourseSortOrder,
@@ -40,7 +40,7 @@ export function updateCourse(id: string, payload: UpdateCoursePayload) {
   });
 }
 
-// Confirmed: blocked server-side if dependent sections/prerequisites exist.
+
 export function deleteCourse(id: string) {
   return apiClient<ApiEnvelope<unknown>>(`/courses/${id}`, {
     method: "DELETE",

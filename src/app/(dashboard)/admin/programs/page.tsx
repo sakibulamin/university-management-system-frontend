@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { ProgramManager } from "@/components/admin/programs/program-manager";
 
 export const metadata: Metadata = {

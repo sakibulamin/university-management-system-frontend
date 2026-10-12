@@ -11,8 +11,7 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // No telemetry/error-reporting backend has been wired up in this
-    // phase — console output only, not swallowed silently.
+
     console.error(error);
   }, [error]);
 

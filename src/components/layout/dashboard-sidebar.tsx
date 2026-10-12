@@ -1,9 +1,14 @@
+
+
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Home, LogOut, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ComponentType, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { type ComponentType, useState } from "react";
+import { toast } from "sonner";
+import { useLogout } from "@/hooks";
+import { getErrorMessage } from "@/lib/get-error-message";
 
 export interface DashboardNavItem {
   href: string;
@@ -23,8 +28,26 @@ function NavLinks({
 
   return (
     <nav className="flex flex-col gap-1">
+      {/* Home link */}
+      <Link
+        href="/"
+        onClick={onNavigate}
+        aria-current={pathname === "/" ? "page" : undefined}
+        className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+          pathname === "/"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:bg-muted hover:text-foreground"
+        }`}
+      >
+        <Home className="size-4 shrink-0" aria-hidden="true" />
+        Home
+      </Link>
+
       {items.map(({ href, label, icon: Icon, exact }) => {
-        const isActive = exact ? pathname === href : pathname.startsWith(href);
+        const isActive = exact
+          ? pathname === href
+          : pathname.startsWith(href);
+
         return (
           <Link
             key={href}
@@ -51,22 +74,58 @@ interface DashboardSidebarProps {
   items: readonly DashboardNavItem[];
 }
 
-/**
- * Shared by the Admin (Step 5) and Instructor (Step 6) dashboards — a
- * role's nav items differ, but the responsive rail/slide-over behavior
- * doesn't, so it lives here once rather than being duplicated per role.
- */
-export function DashboardSidebar({ heading, items }: DashboardSidebarProps) {
+export function DashboardSidebar({
+  heading,
+  items,
+}: DashboardSidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
+
+  const { mutate: logout, isPending: logoutPending } = useLogout();
+
+  const handleLogout = () => {
+    logout(undefined, {
+      onSuccess: () => {
+        setMobileOpen(false);
+        toast.success("Logged out successfully");
+        router.replace("/login");
+        router.refresh();
+      },
+      onError: (error) => {
+        toast.error(getErrorMessage(error));
+      },
+    });
+  };
+
+  const LogoutButton = () => (
+    <button
+      type="button"
+      onClick={handleLogout}
+      disabled={logoutPending}
+      className="mt-4 flex w-full items-center gap-3 rounded-md border-t px-3 py-3 pt-4 text-left text-sm font-medium text-destructive transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      <LogOut className="size-4 shrink-0 text-red-600 dark:text-red-4" />
+      {logoutPending ? "Logging out..." : "Logout"}
+    </button>
+  );
 
   return (
     <>
-      <aside className="hidden w-64 shrink-0 border-r p-4 md:block">
-        <NavLinks items={items} />
+      {/* Desktop sidebar */}
+      <aside className="hidden w-64 shrink-0 border-r p-4 md:flex md:min-h-screen md:flex-col ">
+        <div className="flex-1">
+          <NavLinks items={items} />
+        </div>
+
+        <div className="mt-auto">
+          <LogoutButton />
+        </div>
       </aside>
 
+      {/* Mobile menu header */}
       <div className="flex items-center justify-between border-b p-4 md:hidden">
         <span className="font-semibold">{heading}</span>
+
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
@@ -79,6 +138,7 @@ export function DashboardSidebar({ heading, items }: DashboardSidebarProps) {
         </button>
       </div>
 
+      {/* Mobile slide-over menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
           <div
@@ -86,15 +146,17 @@ export function DashboardSidebar({ heading, items }: DashboardSidebarProps) {
             aria-hidden="true"
             onClick={() => setMobileOpen(false)}
           />
+
           <div
             id={`${heading.toLowerCase()}-mobile-nav`}
             role="dialog"
             aria-modal="true"
             aria-label={`${heading} navigation`}
-            className="fixed inset-y-0 left-0 z-50 w-72 max-w-[80vw] overflow-y-auto bg-background p-4 shadow-lg"
+            className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[80vw] flex-col overflow-y-auto bg-background p-4 shadow-lg"
           >
             <div className="mb-4 flex items-center justify-between">
               <span className="font-semibold">{heading}</span>
+
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
@@ -104,7 +166,17 @@ export function DashboardSidebar({ heading, items }: DashboardSidebarProps) {
                 <X className="size-5" aria-hidden="true" />
               </button>
             </div>
-            <NavLinks items={items} onNavigate={() => setMobileOpen(false)} />
+
+            <div className="flex-1">
+              <NavLinks
+                items={items}
+                onNavigate={() => setMobileOpen(false)}
+              />
+            </div>
+
+            <div className="mt-auto">
+              <LogoutButton />
+            </div>
           </div>
         </div>
       )}

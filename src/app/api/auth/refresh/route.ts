@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import {
   SESSION_COOKIE_NAME,
   clearSessionCookie,
@@ -30,8 +30,7 @@ export async function POST(request: NextRequest) {
     data: { accessToken: refreshed.accessToken },
   });
 
-  // Only re-mint if the backend actually rotated the cookie on this
-  // refresh call — see the TODO(contract) in lib/session.ts.
+
   if (refreshed.newPackedCookie) {
     response.cookies.set({
       name: SESSION_COOKIE_NAME,

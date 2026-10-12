@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "@tanstack/react-form";
@@ -167,7 +168,7 @@ export default function LoginForm() {
 
       <FieldSeparator>Or continue with</FieldSeparator>
 
-      <GoogleLoginComponent onAuthenticated={handleLoginSuccess} />
+      <GoogleLoginComponent  />
 
       <DemoLoginButtons onSelect={handleDemoLogin} disabled={loginPending} />
 

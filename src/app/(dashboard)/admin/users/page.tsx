@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { UserManager } from "@/components/admin/users/user-manager";
 
 export const metadata: Metadata = {

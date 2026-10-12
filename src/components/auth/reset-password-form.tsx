@@ -34,9 +34,7 @@ export default function ResetPasswordForm() {
       onSubmit: resetPasswordSchema,
     },
     onSubmit: ({ value }) => {
-      // confirmNewPassword is a client-only field for the Zod refine
-      // check above — the backend's confirmed contract is exactly
-      // { email, otp, newPassword }, so it is not sent.
+
       resetPassword(
         {
           email: value.email,

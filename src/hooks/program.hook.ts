@@ -3,10 +3,10 @@ import {
   deleteProgram,
   getProgram,
   getPrograms,
-  ProgramListParams,
+  type ProgramListParams,
   updateProgram,
 } from "@/api";
-import { UpdateProgramPayload } from "@/types";
+import type { UpdateProgramPayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const programKeys = {

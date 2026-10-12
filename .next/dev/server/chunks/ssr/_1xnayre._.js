@@ -1355,7 +1355,7 @@ function ButtonLink({ href, children, variant = "primary", className }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/layout/button-link.tsx",
-        lineNumber: 34,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }

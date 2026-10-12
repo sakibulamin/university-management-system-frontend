@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSemesters } from "@/hooks";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { getRecordId } from "@/lib/get-record-id";
-import { SemesterStatus } from "@/types";
+import type { SemesterStatus } from "@/types";
 import { DataTable } from "../data-table";
 import { Modal } from "../modal";
 import { PageHeader } from "../page-header";

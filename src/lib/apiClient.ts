@@ -4,25 +4,12 @@ import { clearAccessToken, getAccessToken, setAccessToken } from "./auth-token-s
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-/**
- * REVISED from Step 1: `credentials: "include"` removed. Under the BFF
- * architecture the browser never holds a backend cookie to send — every
- * cookie-bearing call (login/verify/google-login/refresh/logout) goes
- * through our own /api/auth/* Route Handlers instead. This client is
- * only ever used for direct, Bearer-authenticated calls to the backend.
- *
- * This does mean every one of those direct calls needs the backend's
- * CORS to allow this frontend's origin — see the Phase 2 report.
- */
+
 const rawClient = ofetch.create({
   baseURL: BASE_URL,
+  credentials: "include",
 });
 
-/**
- * TODO(contract): assumes an error body of roughly
- * `{ message?: string, errors?: Record<string,string[]> }`. Unconfirmed —
- * no saved error response exists in the Postman collection.
- */
 function toApiError(error: unknown): ApiError {
   if (error instanceof FetchError) {
     const status = error.statusCode ?? 0;
@@ -46,25 +33,54 @@ function toApiError(error: unknown): ApiError {
 
 let refreshPromise: Promise<string | null> | null = null;
 
-/**
- * REVISED from Step 1: calls OUR OWN /api/auth/refresh (same-origin
- * relative path — plain fetch, not the ofetch instance above, since that
- * instance's baseURL points at the backend, not this app). The browser
- * sends our HttpOnly session cookie automatically because this is a
- * same-origin request; no code here handles that cookie directly.
- */
+
+// function refreshAccessToken(): Promise<string | null> {
+//   if (!refreshPromise) {
+//     refreshPromise = fetch("/api/auth/refresh-token", { method: "POST" })
+//       .then(async (res) => {
+//         if (!res.ok) return null;
+//         const json = (await res.json()) as { data?: { accessToken?: string } };
+//         const token = json.data?.accessToken;
+//         if (!token) return null;
+//         setAccessToken(token);
+//         return token;
+//       })
+//       .catch(() => null)
+//       .finally(() => {
+//         refreshPromise = null;
+//       });
+//   }
+
+//   return refreshPromise;
+// }
+
 function refreshAccessToken(): Promise<string | null> {
   if (!refreshPromise) {
-    refreshPromise = fetch("/api/auth/refresh", { method: "POST" })
+    refreshPromise = fetch("/api/auth/refresh", {
+      method: "POST",
+      credentials: "same-origin",
+    })
       .then(async (res) => {
-        if (!res.ok) return null;
-        const json = (await res.json()) as { data?: { accessToken?: string } };
+        if (!res.ok) {
+          console.error("[api-client] refresh failed:", res.status);
+          return null;
+        }
+
+        const json = (await res.json()) as {
+          data?: { accessToken?: string };
+        };
+
         const token = json.data?.accessToken;
+
         if (!token) return null;
+
         setAccessToken(token);
         return token;
       })
-      .catch(() => null)
+      .catch((error) => {
+        console.error("[api-client] refresh request error:", error);
+        return null;
+      })
       .finally(() => {
         refreshPromise = null;
       });
@@ -75,16 +91,9 @@ function refreshAccessToken(): Promise<string | null> {
 
 export interface ApiClientOptions {
   method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
-  body?: unknown;
-  query?: Record<string, unknown>;
+  body?: object;
+  query?: object;
   headers?: Record<string, string>;
-  /**
-   * Set on any call that must never trigger a refresh-and-retry loop.
-   * Only /auth/me and the general domain endpoints go through this
-   * client now — login/register/verify/google-login/refresh/logout all
-   * go through /api/auth/* instead — but the guard is kept as a safety
-   * net against accidental infinite loops.
-   */
   skipAuthRetry?: boolean;
 }
 

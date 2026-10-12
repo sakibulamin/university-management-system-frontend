@@ -16,10 +16,7 @@ import { EditStudentForm } from "./edit-student-form";
 
 const LIMIT = 10;
 
-// No "New student" button anywhere in this file: there is no confirmed
-// student-creation endpoint. Students only exist via self-registration
-// + email verification (Step 3). GET /students/me is also never used
-// here — that is student self-service, not admin management.
+
 export function StudentManager() {
   const { searchParams, setParams } = useQueryParams();
   const page = Number(searchParams.get("page") ?? "1") || 1;

@@ -16,10 +16,7 @@ export function Footer() {
           </p>
         </div>
 
-        {/*
-          No address/phone/email/social links: none were provided by the
-          project, and none are invented here per instruction.
-        */}
+      
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <Link href="/" className="text-muted-foreground hover:text-foreground">
             Home
@@ -38,7 +35,7 @@ export function Footer() {
           </Link>
         </nav>
 
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-muted-foreground items-center text-center">
           © {currentYear} {APP_NAME}. All rights reserved.
         </p>
       </div>

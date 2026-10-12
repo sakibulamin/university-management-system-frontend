@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { CourseManager } from "@/components/admin/courses/course-manager";
 
 export const metadata: Metadata = {

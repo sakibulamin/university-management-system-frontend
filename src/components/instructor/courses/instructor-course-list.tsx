@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCourses } from "@/hooks";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { getRecordId } from "@/lib/get-record-id";
-import { CourseSortOrder } from "@/types";
+import type { CourseSortOrder } from "@/types";
 import { DataTable } from "@/components/admin/data-table";
 import { PageHeader } from "@/components/admin/page-header";
 import { PaginationControls } from "@/components/admin/pagination-controls";
@@ -12,13 +12,7 @@ import { SearchInput } from "@/components/admin/search-input";
 
 const LIMIT = 10;
 
-// Read-only: no create/edit/delete actions anywhere in this file.
-// PATCH/DELETE /courses/:id are confirmed "ADMIN only" in the Postman
-// collection — instructors have no confirmed mutating access to courses.
-// No instructor-only, department, or status filtering either: nothing
-// in the confirmed contract ties a course to "this instructor's own
-// courses", so this shows the same course list any authenticated user
-// can see via GET /courses, exactly as the Step 6 instructions direct.
+
 export function InstructorCourseList() {
   const { searchParams, setParams } = useQueryParams();
   const page = Number(searchParams.get("page") ?? "1") || 1;

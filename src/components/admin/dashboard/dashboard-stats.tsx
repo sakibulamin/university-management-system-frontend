@@ -9,7 +9,6 @@ function StatValue({ value }: { value: unknown }) {
   if (value === null || value === undefined) return <>—</>;
   if (typeof value === "number" || typeof value === "string") return <>{value}</>;
   if (typeof value === "boolean") return <>{value ? "Yes" : "No"}</>;
-  // Nested object/array: shown compactly rather than guessing its shape.
   return <code className="text-xs">{JSON.stringify(value)}</code>;
 }
 

@@ -49,10 +49,7 @@ export function useVerifyAccount() {
   });
 }
 
-// Renamed from useGoogleOAuth to match the corrected endpoint name.
-// NOTE: components/modules/google-login/GoogleLogin.tsx and login-form.tsx
-// / register-form.tsx still import the old name — they are fixed in the
-// next step (forms), not this one, to keep this step to the hook itself.
+
 export function useGoogleLogin() {
   const queryClient = useQueryClient();
 
@@ -98,14 +95,7 @@ export function useGetMe() {
   });
 }
 
-/**
- * Shared by login, demo login, verify-email and Google login (on both
- * the login and register pages): after a session is established, none
- * of those responses include the user's role — only /auth/me does — so
- * this fetches it once and redirects accordingly. Centralized so the
- * redirect logic (and the "never hardcode a role" rule) has exactly one
- * implementation instead of one per call site.
- */
+
 export function useAuthRedirect() {
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -124,7 +114,10 @@ export function useAuthRedirect() {
         description: options?.successDescription ?? "Welcome back.",
       });
       router.push(options?.callbackUrl ?? getRoleHomePath(me.data.role));
+
     } catch (err) {
+      console.error("[auth-redirect] getMe failed:", err);
+
       toast.error(
         getErrorMessage(
           err,

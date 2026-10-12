@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiClient";
-import {
+import type {
   ApiEnvelope,
   ApiPaginatedEnvelope,
   CreateDepartmentPayload,
@@ -12,10 +12,6 @@ export interface DepartmentListParams {
   search?: string;
 }
 
-// TODO(contract): list-item shape is unconfirmed (no saved response
-// exists anywhere in the Postman collection). Typed as a generic record
-// deliberately — see components/admin/data-table.tsx, which renders
-// whatever fields actually come back rather than a hardcoded schema.
 export function getDepartments(params: DepartmentListParams) {
   return apiClient<ApiPaginatedEnvelope<Record<string, unknown>>>(
     "/departments",
@@ -41,9 +37,7 @@ export function updateDepartment(id: string, payload: UpdateDepartmentPayload) {
   });
 }
 
-// Confirmed: blocked server-side if dependent programs/courses/
-// instructors exist — this UI does not pre-check that, it just surfaces
-// whatever error the backend returns.
+
 export function deleteDepartment(id: string) {
   return apiClient<ApiEnvelope<unknown>>(`/departments/${id}`, {
     method: "DELETE",

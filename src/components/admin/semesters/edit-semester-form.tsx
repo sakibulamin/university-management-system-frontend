@@ -4,7 +4,7 @@ import { useForm } from "@tanstack/react-form";
 import { toast } from "sonner";
 import { useUpdateSemester } from "@/hooks";
 import { getErrorMessage } from "@/lib/get-error-message";
-import { SemesterStatus } from "@/types";
+import type { SemesterStatus } from "@/types";
 import { updateSemesterSchema } from "@/validation";
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";

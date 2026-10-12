@@ -2,10 +2,10 @@ import {
   createSemester,
   getSemester,
   getSemesters,
-  SemesterListParams,
+  type SemesterListParams,
   updateSemester,
 } from "@/api";
-import { UpdateSemesterPayload } from "@/types";
+import type { UpdateSemesterPayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const semesterKeys = {

@@ -11,13 +11,7 @@ interface DepartmentSelectProps {
   "aria-invalid"?: boolean;
 }
 
-/**
- * Populates from the real GET /departments endpoint (limit=100 to get a
- * practically-complete list — there is no dedicated "all departments, no
- * pagination" endpoint). Label text defensively falls back through
- * name -> code -> id, since the department record's response shape is
- * unconfirmed.
- */
+
 export function DepartmentSelect({
   id,
   value,

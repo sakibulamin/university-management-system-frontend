@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 interface ModalProps {
   open: boolean;
@@ -9,13 +9,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-/**
- * Plain, self-contained modal (Escape to close, backdrop click to close,
- * focus moved to the close button on open). Not built on
- * components/ui/dialog.tsx — that file has never been seen by this
- * assistant, and this project's Base UI ("base-nova") style may expose a
- * different API than the more common Radix-based shadcn dialog.
- */
+
 export function Modal({ open, onClose, title, children }: ModalProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 

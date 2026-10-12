@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import VerifyEmailForm from "@/components/auth/verify-email-form";
 
@@ -8,8 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function VerifyEmailPage() {
-  // VerifyEmailForm reads useSearchParams (email) — must be wrapped in
-  // Suspense or `next build` fails.
+
   return (
     <Suspense fallback={null}>
       <VerifyEmailForm />

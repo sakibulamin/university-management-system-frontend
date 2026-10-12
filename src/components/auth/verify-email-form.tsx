@@ -132,12 +132,7 @@ export default function VerifyEmailForm() {
             "Verify"
           )}
         </Button>
-        {/*
-          No "Resend" control: the Postman collection has no resend-OTP
-          endpoint, and the original reference project's Resend button
-          called nothing. Per instruction, that endpoint is not invented
-          here — a non-working button would be worse than none.
-        */}
+ 
         <Link
           href="/register"
           className="text-center text-sm text-muted-foreground underline underline-offset-4 hover:text-primary"

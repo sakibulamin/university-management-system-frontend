@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { InstructorManager } from "@/components/admin/instructors/instructor-manager";
 
 export const metadata: Metadata = {

@@ -6,4 +6,4 @@ export * from "./semester.hook";
 export * from "./instructor.hook";
 export * from "./student.hook";
 export * from "./admin.hook";
-// export * from "./payment.hook";
+export * from "./payment.hook";

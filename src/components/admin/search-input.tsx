@@ -15,9 +15,7 @@ export function SearchInput({
   placeholder = "Search…",
 }: SearchInputProps) {
   const [value, setValue] = useState(defaultValue);
-  // Kept in a ref so the debounce effect's dependency array can honestly
-  // list only `value` — onSearch is often a fresh inline function on
-  // every render, which would otherwise re-fire the debounce timer.
+
   const onSearchRef = useRef(onSearch);
   onSearchRef.current = onSearch;
 

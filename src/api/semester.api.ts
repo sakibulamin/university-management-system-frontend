@@ -1,5 +1,5 @@
 import apiClient from "@/lib/apiClient";
-import {
+import type {
   ApiEnvelope,
   ApiPaginatedEnvelope,
   CreateSemesterPayload,
@@ -36,7 +36,3 @@ export function updateSemester(id: string, payload: UpdateSemesterPayload) {
     body: payload,
   });
 }
-
-// No deleteSemester export: no DELETE /semesters/:id endpoint is
-// confirmed anywhere in the Postman collection. Do not add a delete
-// button in the UI for this resource.

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/admin/page-header";
 import { InstructorDashboardOverview } from "@/components/instructor/instructor-dashboard-overview";
 

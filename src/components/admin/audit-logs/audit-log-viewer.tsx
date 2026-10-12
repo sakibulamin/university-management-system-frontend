@@ -8,9 +8,7 @@ import { PaginationControls } from "../pagination-controls";
 
 const LIMIT = 10;
 
-// No search box here: `search` is not a confirmed query parameter for
-// this endpoint (only userId, entity, action are). No column is
-// hardcoded — DataTable renders whatever the response actually contains.
+
 export function AuditLogViewer() {
   const { searchParams, setParams } = useQueryParams();
   const page = Number(searchParams.get("page") ?? "1") || 1;

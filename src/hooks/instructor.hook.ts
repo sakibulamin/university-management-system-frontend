@@ -4,10 +4,10 @@ import {
   getInstructor,
   getInstructors,
   getMyInstructor,
-  InstructorListParams,
+  type InstructorListParams,
   updateInstructor,
 } from "@/api";
-import { UpdateInstructorPayload } from "@/types";
+import type { UpdateInstructorPayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const instructorKeys = {
@@ -31,8 +31,7 @@ export function useInstructor(id: string) {
   });
 }
 
-// Confirmed "INSTRUCTOR only" — the Instructor Dashboard's own profile
-// view (Step 6). Not used by admin management (Step 5).
+
 export function useMyInstructor() {
   return useQuery({
     queryKey: instructorKeys.me,

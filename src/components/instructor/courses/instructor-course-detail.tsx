@@ -10,11 +10,7 @@ interface InstructorCourseDetailProps {
   id: string;
 }
 
-// No edit button: PATCH /courses/:id is confirmed "ADMIN only" in the
-// Postman collection. No ownership check is invented either — the
-// frontend contract gives no confirmed way to establish whether this
-// instructor "owns" the course, so none is pretended. The backend
-// remains the authority on what this instructor may do.
+
 export function InstructorCourseDetail({ id }: InstructorCourseDetailProps) {
   const { data, isPending, isError, error, refetch } = useCourse(id);
   const course = data?.data;

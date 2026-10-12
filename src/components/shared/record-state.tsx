@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertCircle } from "lucide-react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { getErrorMessage } from "@/lib/get-error-message";
 
 interface RecordStateProps {

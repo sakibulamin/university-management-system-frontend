@@ -15,8 +15,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$
 ;
 function GlobalError({ error, reset }) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // No telemetry/error-reporting backend has been wired up in this
-        // phase — console output only, not swallowed silently.
         console.error(error);
     }, [
         error
@@ -29,7 +27,7 @@ function GlobalError({ error, reset }) {
                 children: "Something went wrong"
             }, void 0, false, {
                 fileName: "[project]/src/app/error.tsx",
-                lineNumber: 21,
+                lineNumber: 20,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -37,7 +35,7 @@ function GlobalError({ error, reset }) {
                 children: "An unexpected error occurred. You can try again, or go back home."
             }, void 0, false, {
                 fileName: "[project]/src/app/error.tsx",
-                lineNumber: 22,
+                lineNumber: 21,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -50,7 +48,7 @@ function GlobalError({ error, reset }) {
                         children: "Try again"
                     }, void 0, false, {
                         fileName: "[project]/src/app/error.tsx",
-                        lineNumber: 26,
+                        lineNumber: 25,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$layout$2f$button$2d$link$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ButtonLink"], {
@@ -58,19 +56,19 @@ function GlobalError({ error, reset }) {
                         children: "Go home"
                     }, void 0, false, {
                         fileName: "[project]/src/app/error.tsx",
-                        lineNumber: 33,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/error.tsx",
-                lineNumber: 25,
+                lineNumber: 24,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/error.tsx",
-        lineNumber: 20,
+        lineNumber: 19,
         columnNumber: 5
     }, this);
 }
@@ -101,7 +99,7 @@ function ButtonLink({ href, children, variant = "primary", className }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/src/components/layout/button-link.tsx",
-        lineNumber: 34,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }

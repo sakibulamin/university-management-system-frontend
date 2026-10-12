@@ -1,30 +1,58 @@
+/** biome-ignore-all lint/a11y/useSemanticElements: <explanation> */
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <explanation> */
+
 "use client";
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AlertCircle } from "lucide-react";
 import { formatFieldLabel } from "@/lib/format-field-label";
 import { getErrorMessage } from "@/lib/get-error-message";
 
-// Defensive-only: never render a field whose name looks like it might
-// hold a secret, even though nothing in the (unconfirmed) response
-// contract suggests one would appear here.
 export const SENSITIVE_KEY_PATTERN = /password|token|secret|hash/i;
 
-export function formatCellValue(value: unknown): ReactNode {
-  if (value === null || value === undefined) return "—";
-  if (typeof value === "boolean") return value ? "Yes" : "No";
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+const ID_FIELD_PATTERN = /^(id|.*id)$/i;
+
+export function formatCellValue(
+  value: unknown,
+  fieldName = "",
+): ReactNode {
+  if (value === null || value === undefined) {
+    return "—";
+  }
+
+  if (typeof value === "boolean") {
+    return value ? "Yes" : "No";
+  }
+
   if (typeof value === "string") {
-    // Best-effort ISO-date detection for readability only — falls back
-    // to the raw string on anything that doesn't parse cleanly.
+    // Format date values.
     if (/^\d{4}-\d{2}-\d{2}/.test(value)) {
       const parsed = new Date(value);
+
       if (!Number.isNaN(parsed.getTime())) {
         return parsed.toLocaleDateString();
       }
     }
+
+    // Shorten UUIDs and long ID fields.
+    const isUuid = UUID_PATTERN.test(value);
+    const isLongId =
+      ID_FIELD_PATTERN.test(fieldName) && value.length > 12;
+
+    if (isUuid || isLongId) {
+      return `${value.slice(0, 8)}...`;
+    }
+
     return value;
   }
-  if (typeof value === "number") return value;
+
+  if (typeof value === "number") {
+    return value;
+  }
+
   return JSON.stringify(value);
 }
 
@@ -36,7 +64,6 @@ interface DataTableProps {
   onRetry?: () => void;
   renderRowActions?: (item: Record<string, unknown>) => ReactNode;
   emptyMessage?: string;
-  /** Row identity for React's key prop — falls back to index if absent. */
   getRowKey?: (item: Record<string, unknown>, index: number) => string;
 }
 
@@ -54,8 +81,12 @@ export function DataTable({
     return (
       <div className="space-y-2" role="status" aria-live="polite">
         <span className="sr-only">Loading…</span>
+
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-10 w-full animate-pulse rounded-md bg-muted" />
+          <div
+            key={i}
+            className="h-10 w-full animate-pulse rounded-md bg-muted"
+          />
         ))}
       </div>
     );
@@ -64,10 +95,15 @@ export function DataTable({
   if (isError) {
     return (
       <div className="flex flex-col items-center gap-3 rounded-lg border border-dashed p-8 text-center">
-        <AlertCircle className="size-6 text-destructive" aria-hidden="true" />
+        <AlertCircle
+          className="size-6 text-destructive"
+          aria-hidden="true"
+        />
+
         <p className="text-sm text-muted-foreground">
           {getErrorMessage(error, "Couldn't load this data.")}
         </p>
+
         {onRetry && (
           <button
             type="button"
@@ -89,9 +125,6 @@ export function DataTable({
     );
   }
 
-  // Columns are the union of keys across all rows on this page — a row
-  // missing an optional field simply shows "—" in that column, rather
-  // than the table assuming every row has the same shape.
   const columns = Array.from(
     new Set(items.flatMap((item) => Object.keys(item))),
   ).filter((key) => !SENSITIVE_KEY_PATTERN.test(key));
@@ -110,24 +143,49 @@ export function DataTable({
                 {formatFieldLabel(col)}
               </th>
             ))}
+
             {renderRowActions && (
-              <th scope="col" className="px-4 py-3 text-right font-medium text-muted-foreground">
+              <th
+                scope="col"
+                className="whitespace-nowrap px-4 py-3 text-right font-medium text-muted-foreground"
+              >
                 Actions
               </th>
             )}
           </tr>
         </thead>
+
         <tbody>
           {items.map((item, index) => (
             <tr
               key={getRowKey ? getRowKey(item, index) : index}
               className="border-b last:border-0 hover:bg-muted/30"
             >
-              {columns.map((col) => (
-                <td key={col} className="whitespace-nowrap px-4 py-3">
-                  {formatCellValue(item[col])}
-                </td>
-              ))}
+              {columns.map((col) => {
+                const value = item[col];
+
+                const isString = typeof value === "string";
+                const isUuid =
+                  isString && UUID_PATTERN.test(value);
+
+                const isLongId =
+                  isString &&
+                  ID_FIELD_PATTERN.test(col) &&
+                  value.length > 12;
+
+                const shouldShorten = isUuid || isLongId;
+
+                return (
+                  <td
+                    key={col}
+                    title={shouldShorten ? value : undefined}
+                    className="whitespace-nowrap px-4 py-3"
+                  >
+                    {formatCellValue(value, col)}
+                  </td>
+                );
+              })}
+
               {renderRowActions && (
                 <td className="whitespace-nowrap px-4 py-3 text-right">
                   {renderRowActions(item)}

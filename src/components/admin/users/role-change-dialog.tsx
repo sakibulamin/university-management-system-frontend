@@ -4,7 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useUpdateUserRole } from "@/hooks";
 import { getErrorMessage } from "@/lib/get-error-message";
-import { UserRole } from "@/types";
+import type { UserRole } from "@/types";
 import { Modal } from "../modal";
 
 interface RoleChangeDialogProps {

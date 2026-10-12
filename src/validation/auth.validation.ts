@@ -1,10 +1,6 @@
 import z from "zod";
 
-// Login must not re-enforce password-complexity rules: those are
-// registration-time policy, and applying them here would reject a
-// correct, already-existing password that predates a policy change (or
-// simply doesn't match this particular regex), locking the user out for
-// no reason the backend itself would agree with.
+
 export const loginSchema = z.object({
   email: z.email("Please enter a valid email address."),
   password: z.string().min(1, "Password is required."),
@@ -18,16 +14,7 @@ const passwordPolicy = z
   .regex(/[0-9]/, "Password must contain at least one number.")
   .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character.");
 
-/**
- * `role` allows STUDENT, INSTRUCTOR and ADMIN per explicit instruction
- * for this step. Note this is a product decision, not a confirmed
- * backend fact: the Phase 1 audit found the verify-email endpoint's own
- * description ("Creates the User + Student") reads as student-only,
- * which is still unconfirmed either way. If the backend rejects
- * self-registration with role=INSTRUCTOR or role=ADMIN, that will surface
- * as a normal backend error on submit — this form does not hide or
- * work around such a rejection.
- */
+
 export const registrationSchema = z
   .object({
     name: z.string().min(3, "Name must be at least 3 characters long."),

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface ButtonLinkProps {
@@ -17,13 +17,7 @@ const variants: Record<NonNullable<ButtonLinkProps["variant"]>, string> = {
   outline: "border border-input bg-background hover:bg-muted",
 };
 
-/**
- * A plain styled <Link>, not a wrapper around components/ui/button.tsx.
- * This project's shadcn style is "base-nova" (Base UI), whose button
- * likely uses a `render` prop rather than Radix's `asChild` — never
- * confirmed, since that file has never been seen by this assistant.
- * Rather than guess at that API, this avoids the dependency entirely.
- */
+
 export function ButtonLink({
   href,
   children,

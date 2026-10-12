@@ -11,14 +11,7 @@ interface InstructorUserSelectProps {
   "aria-invalid"?: boolean;
 }
 
-/**
- * Confirmed: creating an instructor profile requires an existing user's
- * id (instructorId is auto-generated). This does not invent a way to
- * pick "users without an instructor profile yet" — that distinction
- * isn't available from any confirmed endpoint — it simply lists users
- * with role=INSTRUCTOR and lets the admin pick. If the chosen user
- * already has a profile, the backend's own error will surface.
- */
+
 export function InstructorUserSelect({
   id,
   value,

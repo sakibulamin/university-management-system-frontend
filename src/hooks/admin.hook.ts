@@ -1,6 +1,6 @@
 import {
-  AdminUserListParams,
-  AuditLogListParams,
+  type AdminUserListParams,
+  type AuditLogListParams,
   blockUser,
   deleteUser,
   getAuditLogs,
@@ -9,7 +9,7 @@ import {
   unblockUser,
   updateUserRole,
 } from "@/api";
-import { UpdateUserRolePayload } from "@/types";
+import type { UpdateUserRolePayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const adminKeys = {

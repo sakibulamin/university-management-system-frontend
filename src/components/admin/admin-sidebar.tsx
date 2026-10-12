@@ -15,10 +15,7 @@ import {
   type DashboardNavItem,
 } from "@/components/layout/dashboard-sidebar";
 
-// Unchanged from the original Step 5 implementation — only the
-// responsive rail/slide-over behavior was extracted out to
-// DashboardSidebar (Step 6), which this now wraps. Rendered output is
-// identical.
+
 const ADMIN_NAV_ITEMS: readonly DashboardNavItem[] = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { href: "/admin/users", label: "Users", icon: Users },

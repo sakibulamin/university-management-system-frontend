@@ -6,7 +6,7 @@ import { useCourses, useDeleteCourse } from "@/hooks";
 import { useQueryParams } from "@/hooks/use-query-params";
 import { getErrorMessage } from "@/lib/get-error-message";
 import { getRecordId } from "@/lib/get-record-id";
-import { CourseSortOrder } from "@/types";
+import type { CourseSortOrder } from "@/types";
 import { ConfirmDialog } from "../confirm-dialog";
 import { DataTable } from "../data-table";
 import { Modal } from "../modal";
@@ -22,8 +22,7 @@ export function CourseManager() {
   const { searchParams, setParams } = useQueryParams();
   const page = Number(searchParams.get("page") ?? "1") || 1;
   const search = searchParams.get("search") ?? "";
-  // Only confirmed example is sortBy=createdAt — offered as the default
-  // and only option, rather than inventing other sortable fields.
+
   const sortOrder = (searchParams.get("sortOrder") as CourseSortOrder) || "desc";
 
   const { data, isPending, isError, error, refetch } = useCourses({

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { StudentManager } from "@/components/admin/students/student-manager";
 
 export const metadata: Metadata = {

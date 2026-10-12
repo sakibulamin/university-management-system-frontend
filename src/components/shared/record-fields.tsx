@@ -8,12 +8,7 @@ interface RecordFieldsProps {
   record: Record<string, unknown>;
 }
 
-/**
- * Renders whatever fields a single-record response actually contains —
- * same non-inventive approach as the admin DataTable, just laid out as a
- * description list instead of a table row. Reuses DataTable's cell
- * formatting rather than duplicating it.
- */
+
 export function RecordFields({ record }: RecordFieldsProps) {
   const entries = Object.entries(record).filter(
     ([key]) => !SENSITIVE_KEY_PATTERN.test(key),

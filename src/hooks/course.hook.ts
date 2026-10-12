@@ -1,12 +1,12 @@
 import {
   createCourse,
-  CourseListParams,
+  type CourseListParams,
   deleteCourse,
   getCourse,
   getCourses,
   updateCourse,
 } from "@/api";
-import { UpdateCoursePayload } from "@/types";
+import type { UpdateCoursePayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const courseKeys = {

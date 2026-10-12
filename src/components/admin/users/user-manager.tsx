@@ -11,7 +11,7 @@ import {
 import { useQueryParams } from "@/hooks/use-query-params";
 import { getErrorMessage } from "@/lib/get-error-message";
 import { getRecordId } from "@/lib/get-record-id";
-import { UserRole } from "@/types";
+import type { UserRole } from "@/types";
 import { ConfirmDialog } from "../confirm-dialog";
 import { DataTable } from "../data-table";
 import { PageHeader } from "../page-header";

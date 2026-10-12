@@ -7,15 +7,7 @@ interface PaginationControlsProps {
   onPageChange: (page: number) => void;
 }
 
-/**
- * TODO(contract): no paginated response's metadata shape has ever been
- * confirmed (see types/common.type.ts ApiPaginationMeta). Rather than
- * assume a `total`/`totalPages` field exists, "next" is enabled based on
- * how many items actually came back: a full page (itemCount === limit)
- * might mean there's more; a short page means we've reached the end.
- * This can be replaced with real total-based pagination once a real
- * response is seen.
- */
+
 export function PaginationControls({
   page,
   limit,

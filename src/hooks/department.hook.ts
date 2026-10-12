@@ -1,12 +1,12 @@
 import {
   createDepartment,
   deleteDepartment,
-  DepartmentListParams,
+  type DepartmentListParams,
   getDepartment,
   getDepartments,
   updateDepartment,
 } from "@/api";
-import { UpdateDepartmentPayload } from "@/types";
+import type { UpdateDepartmentPayload } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const departmentKeys = {

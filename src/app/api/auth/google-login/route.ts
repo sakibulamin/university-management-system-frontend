@@ -1,9 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { mintSessionCookie, proxyLoginLikeRequest } from "@/lib/session";
 
-// TODO(contract): the Postman description for google-login is just
-// "Public." — no explicit confirmation it sets a cookie the same way
-// login does. Same safe-no-op reasoning as verify-email applies.
 export async function POST(request: NextRequest) {
   let body: unknown;
   try {
